@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedcubing Timer</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#timerContainer {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#timer {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-family: monospace;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Добавлено для переноса кнопок */
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#startStopButton {
+    font-size: 1.5em;
+    background-color: #007bff;
+    color: #fff;
+}
+
+#startStopButton:hover {
+    background-color: #0056b3;
+}
+
+#saveTimeButton {
+    font-size: 1em;
+    background-color: #28a745;
+    color: #fff;
+}
+
+#saveTimeButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#saveTimeButton:hover {
+    background-color: #218838;
+}
+
+#goToHomeButton,
+#goToResultsButton,
+#logoutButton {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#goToHomeButton:hover,
+#goToResultsButton:hover,
+#logoutButton:hover {
+    background-color: #c82333;
+}
+        #logoutButton {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#logoutButton:hover {
+    background-color: #c82333;
+}
+
+
+    </style>
+</head>
+<body>
+<div id="timerContainer">
+    <h1>Таймер</h1>
+
+    <!-- Кнопка старта/остановки таймера -->
+    <button id="startStopButton">Начать</button>
+    <!-- Отображение времени -->
+    <div id="timer">00:00:00</div>
+
+    <!-- Форма для сохранения времени -->
+    <form id="timerForm" method="post" action="{% url 'save_time' %}">
+        {% csrf_token %}
+        <input type="hidden" name="time_in_seconds" id="time_in_seconds_input">
+        <button type="submit" id="saveTimeButton" disabled>Сохранить время</button>
+    </form>
+</div>
+
+<!-- Контейнер для кнопок -->
+<div id="buttonContainer">
+    <!-- Кнопка перехода на главную страницу -->
+    <button id="goToHomeButton">Главная</button>
+    <!-- Кнопка перехода к результатам -->
+    <button id="goToResultsButton">Результаты</button>
+    <!-- Кнопка выхода -->
+    <form action="{% url 'logout' %}" method="post" id="logoutForm" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit">Выход</button>
+</form>
+
+</div>
+
+<script>
+    // Функция для форматирования времени в формат HH:MM:SS
+    function formatTime(timeInSeconds) {
+        var hours = Math.floor(timeInSeconds / 3600);
+        var minutes = Math.floor((timeInSeconds % 3600) / 60);
+        var seconds = Math.floor(timeInSeconds % 60);
+        return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    }
+
+    // Обработчик события для кнопки старта/остановки таймера
+    document.getElementById('startStopButton').addEventListener('click', function() {
+        var button = this;
+        if (button.textContent === 'Начать') {
+            // Начать отсчет времени
+            button.textContent = 'Стоп';
+            document.getElementById('saveTimeButton').disabled = true;
+            var startTime = new Date().getTime();
+            this.interval = setInterval(function() {
+                var currentTime = new Date().getTime();
+                var elapsedTimeInSeconds = Math.floor((currentTime - startTime) / 1000);
+                document.getElementById('timer').textContent = formatTime(elapsedTimeInSeconds);
+                document.getElementById('time_in_seconds_input').value = elapsedTimeInSeconds;
+            }, 1000);
+        } else {
+            // Остановить отсчет времени
+            button.textContent = 'Начать';
+            clearInterval(button.interval);
+            document.getElementById('saveTimeButton').disabled = false;
+        }
+    });
+
+    // Обработчик события для кнопки перехода к результатам
+    document.getElementById('goToResultsButton').addEventListener('click', function() {
+        window.location.href = "{% url 'best_results' %}";
+    });
+
+    // Обработчик события для кнопки перехода на главную страницу
+    document.getElementById('goToHomeButton').addEventListener('click', function() {
+        window.location.href = "{% url 'glav' %}";
+    });
+</script>
+</body>
+</html>

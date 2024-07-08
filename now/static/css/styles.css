@@ -1,0 +1,47 @@
+/* static/css/styles.css */
+
+/* Центрируем форму */
+form {
+    width: 300px;
+    margin: 50px auto; /* Добавляем больший отступ сверху */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+}
+
+/* Стилизуем заголовок */
+h2 {
+    text-align: center;
+    color: #333; /* Черный цвет текста */
+    margin-bottom: 20px;
+}
+
+/* Стилизуем поля ввода */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box; /* Чтобы поле ввода включало padding в свои размеры */
+    border: 1px solid #ccc; /* Подчеркивание поля */
+    border-radius: 5px;
+}
+
+/* Стилизуем кнопку */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px; /* Увеличиваем отступ между полями и кнопкой */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Добавляем плавный переход */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}

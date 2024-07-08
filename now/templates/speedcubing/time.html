@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Timer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #timerContainer {
+            text-align: center;
+        }
+
+        #timer {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+
+        #startStopButton {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #startStopButton:hover {
+            background-color: #0056b3;
+        }
+
+        #infoText {
+            font-size: 1em;
+            margin-top: 20px;
+        }
+        #infoText {
+    font-size: 1em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#infoText a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#infoText a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <div id="timerContainer">
+        <h1>Таймер</h1>
+
+        <!-- Кнопка старта/остановки таймера -->
+        <button id="startStopButton">Начать</button>
+
+        <!-- Отображение времени -->
+        <div id="timer">00:00:00</div>
+
+        <!-- Текстовая информация -->
+        <div id="infoText">
+            Если вы хотите сохранять свои результаты, то <a href="{% url 'signup' %}">зарегистрируйтесь</a>.
+            А если вы зарегистрированы, то <a href="{% url 'login' %}">Войти</a>.
+        </div>
+    </div>
+
+    <script>
+        function formatTime(timeInSeconds) {
+            var hours = Math.floor(timeInSeconds / 3600);
+            var minutes = Math.floor((timeInSeconds % 3600) / 60);
+            var seconds = Math.floor(timeInSeconds % 60);
+            return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        }
+
+        document.getElementById('startStopButton').addEventListener('click', function() {
+            toggleTimer();
+        });
+
+        function toggleTimer() {
+            var button = document.getElementById('startStopButton');
+            if (button.textContent === 'Start') {
+                button.textContent = 'Stop';
+                startTimer();
+            } else {
+                button.textContent = 'Start';
+                stopTimer();
+            }
+        }
+
+        function startTimer() {
+            var startTime = new Date().getTime();
+            document.addEventListener('keydown', handleKeyDown);
+            updateTimerInterval = setInterval(function() {
+                var currentTime = new Date().getTime();
+                var elapsedTimeInSeconds = Math.floor((currentTime - startTime) / 1000);
+                document.getElementById('timer').textContent = formatTime(elapsedTimeInSeconds);
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(updateTimerInterval);
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === ' ') {
+                toggleTimer();
+                event.preventDefault();
+            }
+        }
+    </script>
+
+</body>
+</html>

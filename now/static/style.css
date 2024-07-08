@@ -1,0 +1,342 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7; 
+}
+
+header {
+ background-color: black; 
+ color: #fff; 
+ padding: 50px;  
+ top: 0; 
+ left: 0;  
+}
+
+h1 {
+  margin: 0;
+}
+
+.p1 {
+  margin: 0;
+  margin-left: 100px;
+  margin-right: 300px;
+}
+
+
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+ 
+}
+
+nav ul li {
+   display: inline;
+   margin-left: 50px;
+   margin-right: 30px;
+   
+}
+
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff; 
+}
+
+footer {
+  background-color: black;/*transparent*/
+  color: #fff; 
+  padding: 60px;
+  text-align: center;
+}
+/*ДЛЯ ТЕМ*/
+.container {
+  display: flex;
+  align-items: center;
+}
+		
+.div1 {
+	background-image: url("static/1.png");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div1::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); 
+        mix-blend-mode: multiply; 
+}
+
+.div1-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+
+
+.div2 {
+	background-image: url("static/Back1.png");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div2::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background-color: rgba(0, 0, 0, 0.5); */
+        mix-blend-mode: multiply; 
+}
+
+.div2-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+
+
+.div3 {
+	background-image: url("static/Back2.png");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div3::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background-color: rgba(0, 0, 0, 0.5); */
+        mix-blend-mode: multiply; 
+}
+
+.div3-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+
+
+.div4 {
+	background-image: url("static/fon2.png");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div4::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); 
+        mix-blend-mode: multiply; 
+}
+
+.div4-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+.div5 {
+	background-image: url("static/fon3.png");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div5::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background-color: rgba(0, 0, 0, 0.5); */
+        mix-blend-mode: multiply; 
+}
+
+.div5-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+
+
+
+.div6 {
+	background-image: url("static/fon6.jpg");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div6::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background-color: rgba(0, 0, 0, 0.5); */
+        mix-blend-mode: multiply; 
+}
+
+.div6-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+
+.div7 {
+	background-image: url("static/fast3.jpg");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div7::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background-color: rgba(0, 0, 0, 0.5); */
+        mix-blend-mode: multiply; 
+}
+
+.div7-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+.div8 {
+	background-image: url("static/bilde.jpg");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+	
+}
+
+.div8::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background-color: rgba(0, 0, 0, 0.5); */
+        mix-blend-mode: multiply; 
+}
+
+.div8-content {
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+.icon {
+	display: inline-block;
+	margin-right: 5px; 
+}
+
+
+/*ДЛЯ АНИМАЦИИ*/
+.image-slider {
+  width: 600px; /* Задайте ширину слайдера по своему усмотрению */
+  height: 1650px; /* Задайте высоту слайдера по своему усмотрению */
+  overflow: hidden; /* Скрытие изображений, выходящих за пределы слайдера */
+}
+
+.image-slider img {
+	
+  display: block; /* Убираем отступы между изображениями */
+  max-width: 100%; /* Изображения не будут превышать ширину слайдера */
+  height: 150; /* Автоматическая высота изображений */
+  animation: slide 10s infinite; /* Анимация для переключения изображений */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%); /* Начальное положение слайдера */
+  }
+  50% {
+    transform: translateX(120%); /* Изображение улетает вправо */
+  }
+  100% {
+    transform: translateX(0%); /* Возврат к начальной позиции */
+  }
+}
+
+.image-slider img:nth-child(1) {
+  animation-duration: 7.1s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(2) {
+  animation-duration: 7.2s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(3) {
+  animation-duration: 7.3s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(4) {
+  animation-duration: 7.4s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(5) {
+  animation-duration: 7.5s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(6) {
+  animation-duration: 7.6s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(7) {
+  animation-duration: 7.7s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(8) {
+  animation-duration: 7.8s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(9) {
+  animation-duration: 7.9s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(10) {
+  animation-duration: 8s; /* Длительность анимации для первого изображения */
+}
+.image-slider img:nth-child(11) {
+  animation-duration: 8.1s; /* Длительность анимации для первого изображения */
+}
